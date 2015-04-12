@@ -60,6 +60,7 @@ Spiderable2._verifyUrl = function ( siteAbsoluteUrl, requestUrl ) {
 };
 
 Spiderable2.loadBody = function( url, callback ) {
+	if ( Spiderable2.verbose ) console.log( 'Loading page content from: ' + url );
 	var zombie = new Zombie();
     zombie.visit( url, {
     	waitFor: Spiderable2.timeout,
@@ -67,24 +68,30 @@ Spiderable2.loadBody = function( url, callback ) {
     	debug: Spiderable2.verbose,
     	silent: !Spiderable2.verbose
     }, function() {
-    	var evaluationInterval = setInterval( function() {
+    	var pageReadyInterval = setInterval( function() {
     		pageReady = zombie.evaluate( '(typeof(Spiderable2) !== "undefined")' );
-    		if( pageReady ){
-    			spiderableReady = zombie.evaluate( 'Spiderable2.pageReadyEvaluation()' );
-	    		if ( spiderableReady ) {
-	    			Meteor.clearInterval( evaluationInterval );
-	    			setTimeout( function(){
-	    				// JS generated Style Tags dont work
-	    				var result = zombie.html();
-		  				result = result.replace( /<script[^>]+>(.|\n|\r)*?<\/script\s*>/ig, '' );
-		  				result = result.replace( '<meta name="fragment" content="!">', '' );
-		  				result = minify( result, {
-		  					collapseWhitespace: true,
-		  					conservativeCollapse: true
-		  				});
-		    			callback( null, result );
-	    			}, 300 );
-	    		}
+    		if ( pageReady ){
+    			Meteor.clearInterval( pageReadyInterval );
+    			if ( Spiderable2.verbose ) console.log( 'The page is now ready.' );
+    			var spiderable2ReadyInterval = setInterval( function(){
+    				spiderableReady = zombie.evaluate( 'Spiderable2.pageReadyEvaluation()' );
+		    		if ( spiderableReady ) {
+		    			if ( Spiderable2.verbose ) console.log( 'The page is now loaded' );
+		    			Meteor.clearInterval( spiderable2ReadyInterval );
+		    			setTimeout( function(){
+		    				// JS generated Style Tags dont work
+		    				var result = zombie.html();
+			  				result = result.replace( /<script[^>]+>(.|\n|\r)*?<\/script\s*>/ig, '' );
+			  				result = result.replace( '<meta name="fragment" content="!">', '' );
+			  				result = minify( result, {
+			  					collapseWhitespace: true,
+			  					conservativeCollapse: true
+			  				});
+			  				if ( Spiderable2.verbose ) console.log( 'Returning page content to request.' );
+			    			callback( null, result );
+		    			}, 300 );
+		    		}
+    			}, 300 );
     		}
     	}, 300 );
     });

@@ -34,9 +34,9 @@ Spiderable2.pageReadyEvaluation = function() {
 		return false;
 	}
     if ( typeof Package === 'undefined'
-        	|| Package['spiderable2'] === undefined
-        	|| Package['spiderable2'].Spiderable2 === undefined
-        	|| !Package['spiderable2'].Spiderable2._initialSubscriptionsStarted ) {
+        	|| Package['lufrai:spiderable2'] === undefined
+        	|| Package['lufrai:spiderable2'].Spiderable2 === undefined
+        	|| !Package['lufrai:spiderable2'].Spiderable2._initialSubscriptionsStarted ) {
       	return false;
     }
     Tracker.flush();
