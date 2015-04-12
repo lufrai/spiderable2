@@ -9,13 +9,15 @@ https://github.com/iron-meteor/iron-router/issues/1192
 
 # Settings
 You can add the following settings in your **Meteor Settings Config json File**:
-	{
-		'spiderable2': {
-			'timeout': 1000,
-			'port': 3000,
-			'verbose': false
-		}
+```json
+{
+	'spiderable2': {
+		'timeout': 1000,
+		'port': 3000,
+		'verbose': false
 	}
+}
+```
 
 # Dependencies
 make `apt-get install build-essential`
