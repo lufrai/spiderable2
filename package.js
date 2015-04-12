@@ -1,5 +1,5 @@
 Package.describe({
-  name: "spiderable2",
+  name: "lufrai:spiderable2",
   summary: "Docker + Port friendly Spiderable package",
   version: "0.9.0",
   git: "https://github.com/lufrai/spiderable2",
@@ -26,6 +26,6 @@ Package.on_use(function (api) {
 });
 
 Package.on_test(function (api) {
-  api.use(['spiderable', 'tinytest']);
+  api.use(['lufrai:spiderable2', 'tinytest']);
   api.add_files('spiderable_tests.js', 'server');
 });
