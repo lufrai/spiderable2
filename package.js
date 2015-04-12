@@ -1,7 +1,7 @@
 Package.describe({
   name: "lufrai:spiderable2",
   summary: "Docker + Port friendly Spiderable package",
-  version: "0.9.0",
+  version: "0.9.1",
   git: "https://github.com/lufrai/spiderable2",
   documentation: 'README.md'
 });
