@@ -26,6 +26,7 @@ make `apt-get install build-essential`
 This is an early prototype so please be careful and try it out before you deploy it in production!
 
 # Known Problems
+- There seems to be a problem in regards to meteor-pages, if you use that package spiderable will maybe not work correctly
 - Style tags which were added dynamically `onTimeout` will eventually not being correctly added to the output! I had a problem where I dynamically added a style `display: block` to a div Element and the style was missing in the spiderable2 output
 - Sometimes the performance is slow
 
