@@ -107,7 +107,7 @@ Spiderable2.start = function() {
 		// the <meta name="fragment" content="!"> (see spiderable.html) approach also
 		// described in the spec is still common and used by several crawlers.
 		if ( /\?.*_escaped_fragment_=/.test( req.url ) ||
-				_.any( Spiderable2.userAgentRegExps, function ( re ) {
+				_.any( Spiderable2.allowedUserAgentRegExps, function ( re ) {
 	        		return re.test( req.headers['user-agent'] );
 	    		}
 		)) {
