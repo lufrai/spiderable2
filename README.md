@@ -1,5 +1,5 @@
-# This package is no longer maintained. 
-Please use the official spiderable which should have fixed its flaws
+# This package is no longer maintained
+Please use the official spiderable which should have fixed its flaws.
 
 # Differences to the official spiderable package
 The official spiderable package uses phantomjs and the stdout to browse the page and get the missing body. The used technologies create many problems on different environments and bugfixing is really complex. Spiderable2 uses zombie as the browser of choice which is better integrated with node and the package is reworked in general.
