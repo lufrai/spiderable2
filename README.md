@@ -14,10 +14,10 @@ https://github.com/iron-meteor/iron-router/issues/1192
 You can add the following settings in your **Meteor Settings Config json File**:
 ```json
 {
-	'spiderable2': {
-		'timeout': 1000,
-		'port': 3000,
-		'verbose': false
+	"spiderable2": {
+		"timeout": 1000,
+		"port": 3000,
+		"verbose": false
 	}
 }
 ```
